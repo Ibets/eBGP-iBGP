@@ -118,27 +118,27 @@ class OSPFLab(Topo):
 		
 		#  AS1
 		C11 = self.addHost('C11', ip="172.16.1.2/24", defaultRoute="via 172.16.1.1")
-		C22 = self.addHost('C21', ip="172.17.1.2/24", defaultRoute="via 172.17.1.1")
-		C33 = self.addHost('C31', ip="172.18.1.2/24", defaultRoute="via 172.18.1.1")
+		C22 = self.addHost('C22', ip="172.17.1.2/24", defaultRoute="via 172.17.1.1")
+		C33 = self.addHost('C32', ip="172.18.1.2/24", defaultRoute="via 172.18.1.1")
 
 		S11 = self.addSwitch("S11", inNamespace=True)
-		S22 = self.addSwitch("S11", inNamespace=True)
-		S33 = self.addSwitch("S11", inNamespace=True)
+		S22 = self.addSwitch("S22", inNamespace=True)
+		S33 = self.addSwitch("S23", inNamespace=True)
 		
 		R11 = self.addNode("R11", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
-		R12 = self.addNode("R11", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R12 = self.addNode("R12", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
 		R13 = self.addNode("R13", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
 		R14 = self.addNode("R14", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
 
-		R21 = self.addNode("R11", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
-		R22 = self.addNode("R11", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
-		R23 = self.addNode("R13", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
-		R24 = self.addNode("R14", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R21 = self.addNode("R21", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R22 = self.addNode("R22", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R23 = self.addNode("R23", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R24 = self.addNode("R24", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
 
-		R31 = self.addNode("R11", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
-		R32 = self.addNode("R11", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
-		R33 = self.addNode("R13", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
-		R34 = self.addNode("R14", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R31 = self.addNode("R31", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R32 = self.addNode("R32", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R33 = self.addNode("R33", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
+		R34 = self.addNode("R34", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
 
 		# add links for subnet 1
 		self.addLink(S11,C11)
