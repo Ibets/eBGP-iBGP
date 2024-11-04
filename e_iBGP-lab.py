@@ -142,34 +142,35 @@ class OSPFLab(Topo):
 		R33 = self.addNode("R33", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
 		R34 = self.addNode("R34", cls=LinuxRouter, ip=None, privateDirs=privateDirs, inNamespace=True)
 		
-		# Links for subnet 1
+		# Subnet 1
 		self.addLink(S11, C11)
-		self.addLink(S11, R12, intfName2="eth0") 
-		self.addLink(R12, R11, intfName1="eth1", intfName2="eth1")
-		self.addLink(R12, R14, intfName1="eth2", intfName2="eth1")
-		self.addLink(R13, R14, intfName1="eth0", intfName2="eth2")
-		self.addLink(R13, R11, intfName1="eth1", intfName2="eth2")
+		self.addLink(S11, R12)  # Removed intfName2="eth0"
+		self.addLink(R12, R11, intfName1="port1_1", intfName2="port1_1")  # Changed intfName1 to port1_1
+		self.addLink(R12, R14, intfName1="port1_2", intfName2="port1_1")  # Changed intfName1 to port1_2
+		self.addLink(R13, R14, intfName1="port1_0", intfName2="port1_2")  # Changed intfName1 to port1_0
+		self.addLink(R13, R11, intfName1="port1_1", intfName2="port1_2")  # Changed intfName1 to port1_1
 		
-		# Links for subnet 2
-		self.addLink(S21, C21)
-		self.addLink(S21, R21, intfName2="eth0") 
-		self.addLink(R22, R21, intfName1="eth1", intfName2="eth1")
-		self.addLink(R22, R24, intfName1="eth2", intfName2="eth1")
-		self.addLink(R23, R24, intfName1="eth1", intfName2="eth2")
-		self.addLink(R23, R21, intfName1="eth2", intfName2="eth2")
+		# Subnet 2
+		self.addLink(S22, C22)
+		self.addLink(S22, R21)  # Removed intfName2="eth0"
+		self.addLink(R22, R21, intfName1="port2_1", intfName2="port2_1")  # Changed intfName1 to port2_1
+		self.addLink(R22, R24, intfName1="port2_2", intfName2="port2_1")  # Changed intfName1 to port2_2
+		self.addLink(R23, R24, intfName1="port2_1", intfName2="port2_2")  # Changed intfName1 to port2_1
+		self.addLink(R23, R21, intfName1="port2_2", intfName2="port2_2")  # Changed intfName1 to port2_2
 		
-		# Links for subnet 3
-		self.addLink(S31, C31)
-		self.addLink(S31, R33, intfName2="eth0") 
-		self.addLink(R32, R31, intfName1="eth1", intfName2="eth1")
-		self.addLink(R32, R34, intfName1="eth2", intfName2="eth1")
-		self.addLink(R33, R34, intfName1="eth1", intfName2="eth2")
-		self.addLink(R33, R31, intfName1="eth2", intfName2="eth2")
+		# Subnet 3
+		self.addLink(S33, C33)
+		self.addLink(S33, R33)  # Removed intfName2="eth0"
+		self.addLink(R32, R31, intfName1="port3_1", intfName2="port3_1")  # Changed intfName1 to port3_1
+		self.addLink(R32, R34, intfName1="port3_2", intfName2="port3_1")  # Changed intfName1 to port3_2
+		self.addLink(R33, R34, intfName1="port3_1", intfName2="port3_2")  # Changed intfName1 to port3_1
+		self.addLink(R33, R31, intfName1="port3_2", intfName2="port3_2")  # Changed intfName1 to port3_2
 		
-		# Interconnecting links between routers
-		self.addLink(R14, R11, intfName1="eth0", intfName2="eth0")
-		self.addLink(R23, R34, intfName1="eth0", intfName2="eth0")
-		self.addLink(R11, R31, intfName1="eth0", intfName2="eth0")
+		# Backbone routers (inter-subnet links)
+		self.addLink(R14, R11, intfName1="port1_0", intfName2="port1_0")  # Changed intfName1 to port1_0
+		self.addLink(R23, R34, intfName1="port2_0", intfName2="port3_0")  # Changed intfName1 to port2_0 and assumed port3_0 for R34
+		self.addLink(R11, R31, intfName1="port1_0", intfName2="port3_0")  # Changed intfName1 to port1_0 and assumed port3_0 for R31
+
 
 	        #region
 		# Do not manually set the interface name of a switch's interface
