@@ -118,9 +118,9 @@ class OSPFLab(Topo):
 		
 		#  R1 subnet
 		#  AS1
-		C11 = self.addHost('C11', ip="172.16.1.2/24", defaultRoute="via 172.16.1.1")
-		C21 = self.addHost('C21', ip="172.17.1.2/24", defaultRoute="via 172.17.1.1")
-		C31 = self.addHost('C31', ip="172.18.1.2/24", defaultRoute="via 172.18.1.1")
+		C11 = self.addHost('C11', ip="172.20.1.2/24", defaultRoute="via 172.20.1.1")
+		C21 = self.addHost('C21', ip="172.21.1.2/24", defaultRoute="via 172.21.1.1")
+		C31 = self.addHost('C31', ip="172.22.1.2/24", defaultRoute="via 172.22.1.1")
 
 		S11 = self.addSwitch("S11", inNamespace=True)
 		S21 = self.addSwitch("S21", inNamespace=True)
