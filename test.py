@@ -151,16 +151,16 @@ class OSPFLab(Topo):
 		self.addLink(R13, R11, intfName1="eth1", intfName2="eth2")  # Changed intfName1 back to eth1
 		
 		# Subnet 2
-		self.addLink(S22, C22)
-		self.addLink(S22, R21, intfName2="eth0")  # Removed intfName2="eth0"
+		self.addLink(S21, C21)
+		self.addLink(S21, R21, intfName2="eth0")  # Removed intfName2="eth0"
 		self.addLink(R22, R21, intfName1="eth1", intfName2="eth1")  # Changed intfName1 back to eth1
 		self.addLink(R22, R24, intfName1="eth2", intfName2="eth1")  # Changed intfName1 back to eth2
 		self.addLink(R23, R24, intfName1="eth1", intfName2="eth2")  # Changed intfName1 back to eth1
 		self.addLink(R23, R21, intfName1="eth2", intfName2="eth2")  # Changed intfName1 back to eth2
 		
 		# Subnet 3
-		self.addLink(S33, C33)
-		self.addLink(S33, R33, intfName2="eth0")  # Removed intfName2="eth0"
+		self.addLink(S31, C31)
+		self.addLink(S31, R33, intfName2="eth0")  # Removed intfName2="eth0"
 		self.addLink(R32, R31, intfName1="eth1", intfName2="eth1")  # Changed intfName1 back to eth1
 		self.addLink(R32, R34, intfName1="eth2", intfName2="eth1")  # Changed intfName1 back to eth2
 		self.addLink(R33, R34, intfName1="eth1", intfName2="eth2")  # Changed intfName1 back to eth1
